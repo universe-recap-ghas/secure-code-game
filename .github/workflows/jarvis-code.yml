@@ -28,5 +28,5 @@ jobs:
       - name: Check GitHub Status
         run: curl -s https://www.githubstatus.com/api/v2/status.json
       - name: Changed Files
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@v45
       
