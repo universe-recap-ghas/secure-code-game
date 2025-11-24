@@ -12,7 +12,7 @@ jobs:
         run: echo "Hello, World!"
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Run Docker container action
         uses: docker://alpine:3.18
