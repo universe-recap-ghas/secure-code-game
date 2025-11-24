@@ -17,7 +17,7 @@ jobs:
       
       - name: Create Issue
         id: create-issue
-        uses: tdupoiron/create-issue-action@v1
+        uses: tdupoiron-actions/create-issue-action@v1
         with:
           title: '🎉 GitHub Universe Recap - Paris 2025'
           body: |
