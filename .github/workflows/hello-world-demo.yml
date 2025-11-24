@@ -1,0 +1,20 @@
+
+name: Hello World Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hello-world-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello, World!"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Docker container action
+        uses: docker://alpine:3.18
+        with:
+          args: echo "Hello from Docker container!"
