@@ -48,12 +48,12 @@ jobs:
             
             ---
             _This issue was automatically created to track the GitHub Universe Recap Paris event._
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}
       
       - name: Add Comment to Commit
         uses: peter-evans/create-or-update-comment@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}
           repository: ${{ github.repository }}
           commit-id: ${{ github.sha }}
           body: |
@@ -71,6 +71,7 @@ jobs:
       - name: Close Issue with Octokit
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.PAT_TOKEN }}
           script: |
             const issueNumber = ${{ steps.create-issue.outputs.number }};
             
