@@ -17,7 +17,7 @@ jobs:
       
       - name: Create Issue
         id: create-issue
-        uses: tdupoiron-actions/create-issue-action@v1.0.0
+        uses: tdupoiron-actions/create-issue-action@v1.0.1
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
           repository: ${{ github.repository }}
