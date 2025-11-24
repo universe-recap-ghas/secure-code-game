@@ -56,7 +56,7 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
           repository: ${{ github.repository }}
-          issue-number: ${{ steps.create-issue.outputs.number }}
+          issue-number: ${{ steps.create-issue.outputs.issue-number }}
           body: |
             🎯 **GitHub Universe Recap Paris - Automated Workflow**
             
@@ -74,7 +74,7 @@ jobs:
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
           script: |
-            const issueNumber = ${{ steps.create-issue.outputs.number }};
+            const issueNumber = ${{ steps.create-issue.outputs.issue-number }};
             
             await github.rest.issues.update({
               owner: context.repo.owner,
@@ -90,9 +90,9 @@ jobs:
         run: |
           echo "## 🎉 GitHub Universe Recap Paris 2025 - Workflow Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ **Issue Created:** #${{ steps.create-issue.outputs.number }}" >> $GITHUB_STEP_SUMMARY
-          echo "📝 **Issue URL:** ${{ steps.create-issue.outputs.html_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Issue Created:** #${{ steps.create-issue.outputs.issue-number }}" >> $GITHUB_STEP_SUMMARY
+          echo "📝 **Issue URL:** ${{ steps.create-issue.outputs.issue-url }}" >> $GITHUB_STEP_SUMMARY
           echo "💬 **Comment added to commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "🔒 **Issue Closed:** #${{ steps.create-issue.outputs.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "🔒 **Issue Closed:** #${{ steps.create-issue.outputs.issue-number }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "🇫🇷 **Event:** GitHub Universe Recap - Paris, November 25, 2025" >> $GITHUB_STEP_SUMMARY
