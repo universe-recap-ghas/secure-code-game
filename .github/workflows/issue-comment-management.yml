@@ -2,23 +2,6 @@ name: Issue and Comment Management
 
 on:
   workflow_dispatch:
-    inputs:
-      issue_title:
-        description: 'Title for the issue'
-        required: false
-        default: 'Automated Issue'
-      issue_body:
-        description: 'Body content for the issue'
-        required: false
-        default: 'This issue was created automatically by workflow dispatch.'
-      commit_sha:
-        description: 'Commit SHA to comment on'
-        required: false
-        default: ''
-      comment_body:
-        description: 'Comment to add on the commit'
-        required: false
-        default: 'Automated comment added by workflow.'
 
 permissions:
   contents: write
@@ -36,8 +19,35 @@ jobs:
         id: create-issue
         uses: tdupoiron/create-issue-action@v1
         with:
-          title: ${{ github.event.inputs.issue_title }}
-          body: ${{ github.event.inputs.issue_body }}
+          title: '🎉 GitHub Universe Recap - Paris 2025'
+          body: |
+            ## GitHub Universe Recap - Paris Edition
+            
+            📅 **Date:** November 25, 2025
+            📍 **Location:** Paris, France
+            
+            ### Event Highlights
+            
+            Join us for an exclusive recap of GitHub Universe 2025! This special event brings together developers, security professionals, and GitHub enthusiasts from across France and Europe.
+            
+            **What to expect:**
+            - 🚀 Latest GitHub innovations and product announcements
+            - 🔒 Advanced security features with GitHub Advanced Security
+            - 🤖 AI-powered development with GitHub Copilot
+            - 💡 Best practices from industry leaders
+            - 🌟 Networking with the French developer community
+            
+            ### Agenda
+            - **09:00** - Registration & Coffee
+            - **10:00** - Keynote: The Future of AI-Assisted Development
+            - **11:30** - Workshop: Secure Code Game Challenge
+            - **14:00** - GitHub Advanced Security Deep Dive
+            - **16:00** - Community Networking
+            
+            Looking forward to seeing everyone there! 🇫��
+            
+            ---
+            _This issue was automatically created to track the GitHub Universe Recap Paris event._
           token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Add Comment to Commit
@@ -45,8 +55,18 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
-          commit-id: ${{ github.event.inputs.commit_sha || github.sha }}
-          body: ${{ github.event.inputs.comment_body }}
+          commit-id: ${{ github.sha }}
+          body: |
+            🎯 **GitHub Universe Recap Paris - Automated Workflow**
+            
+            This commit is part of the GitHub Universe Recap event demonstration in Paris (November 25, 2025).
+            
+            ✨ Demonstrating GitHub Actions automation:
+            - ✅ Issue creation
+            - 💬 Commit commenting
+            - 🔒 Automated issue closure
+            
+            🇫🇷 Merci et à bientôt à Paris!
       
       - name: Close Issue with Octokit
         uses: actions/github-script@v7
@@ -66,9 +86,11 @@ jobs:
       
       - name: Summary
         run: |
-          echo "## Workflow Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 🎉 GitHub Universe Recap Paris 2025 - Workflow Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✅ **Issue Created:** #${{ steps.create-issue.outputs.number }}" >> $GITHUB_STEP_SUMMARY
           echo "📝 **Issue URL:** ${{ steps.create-issue.outputs.html_url }}" >> $GITHUB_STEP_SUMMARY
-          echo "💬 **Comment added to commit:** \`${{ github.event.inputs.commit_sha || github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "💬 **Comment added to commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
           echo "🔒 **Issue Closed:** #${{ steps.create-issue.outputs.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🇫🇷 **Event:** GitHub Universe Recap - Paris, November 25, 2025" >> $GITHUB_STEP_SUMMARY
