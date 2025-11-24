@@ -50,14 +50,13 @@ jobs:
             
             ---
             _This issue was automatically created to track the GitHub Universe Recap Paris event._
-          token: ${{ secrets.PAT_TOKEN }}
       
       - name: Add Comment to Commit
         uses: peter-evans/create-or-update-comment@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
           repository: ${{ github.repository }}
-          commit-id: ${{ github.sha }}
+          issue-number: ${{ steps.create-issue.outputs.number }}
           body: |
             🎯 **GitHub Universe Recap Paris - Automated Workflow**
             
