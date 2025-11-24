@@ -1,6 +1,4 @@
-# This workflow runs dependency review on pull requests and comments the results.
-
-name: Dependency Review
+name: 03 - Dependency Review
 
 on:
   pull_request:

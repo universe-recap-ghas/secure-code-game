@@ -1,4 +1,4 @@
-name: Issue and Comment Management
+name: 02 - Issue and Comment Management
 
 on:
   workflow_dispatch:
